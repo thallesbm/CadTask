@@ -1,0 +1,7 @@
+{
+  "name": "CadTask",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
