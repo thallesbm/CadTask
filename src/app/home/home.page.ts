@@ -13,19 +13,9 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['home.page.scss'],
  
 })
-export class HomePage implements OnInit{
+export class HomePage {
 
-  imagem: any = null;
-
-  private options: CameraOptions = {
-    quality: 50,
-    destinationType: this.camera.DestinationType.FILE_URI,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE
-  }  
-  
-  
-public list: List;
+  imagePath = '';
 
   constructor(
     private camera: Camera,  private sn: DomSanitizer,   
@@ -46,6 +36,31 @@ public list: List;
     this.list = this.get();
 
     }
+
+
+  startCamera() {
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    };
+
+    this.camera.getPicture(options).then((imageData) => {
+      // imageData is either a base64 encoded string or a file URI
+      // If it's base64 (DATA_URL):
+      let base64Image = 'data:image/jpeg;base64,' + imageData;
+     }, (err) => {
+      // Handle error
+     });
+
+  }
+ 
+  
+  
+public list: List;
+
+
 
   async showAddTask() {
     const alert = await this.alertCtrl.create({
@@ -107,20 +122,7 @@ public list: List;
       else
       return new List('Minha Lista de tarefas', []);
     }
-
-    
-    ngOnInit(){}
-
-    baterfoto(){
-      
-      this.camera.getPicture(this.options).then((imageData) => {
-      this.imagem = this.sn.bypassSecurityTrustResourceUrl('data:image/jpeg;base64,' + imageData);
-    },(err) => {
-      alert('Ops!\nHouve um erro');
-      console.log(err)
-    
-    });
   }
-}
+
 
 

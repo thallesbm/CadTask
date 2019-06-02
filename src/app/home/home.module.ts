@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
-
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { HomePage } from './home.page';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
 
@@ -20,7 +21,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
     ])
   ],
   declarations: [HomePage],
-  providers: [Camera],
+  providers: [Camera, StatusBar, SplashScreen], 
   
 })
 export class HomePageModule {}

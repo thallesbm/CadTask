@@ -18,6 +18,12 @@
         </ion-button>
       </ion-item>
     </ion-list>
+
+    <!-- <ion-content>
+      <ion-button ion-button (click)="startCamera()">Camera</ion-button>
+
+      <img [src]="imagePath">
+     </ion-content> -->
   
     <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button color="dark two">
@@ -31,13 +37,9 @@
         <ion-fab-button>
           <ion-icon name="camera"></ion-icon>
           <ion-content>
-            <div class="ion-padding">
-          
-              <p>Foto:</p>
-              <ion-button (click)="Camera()">Foto</ion-button>
-              <img *ngIf="imagem" [src]="imagem">
-          
-            </div>
+           <ion-button ion-button (click)="startCamera()">startCamera</ion-button>
+
+           <img [src]="imagePath">
           </ion-content>
         </ion-fab-button>
       </ion-fab-list>
